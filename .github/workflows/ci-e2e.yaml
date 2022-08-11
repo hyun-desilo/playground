@@ -4,7 +4,7 @@ name: CI HER End-to-End
 
 on:
   pull_request_review_comment:
-    type: [created]
+    types: [created, deleted]
 
 jobs:
   end-to-end-test:
