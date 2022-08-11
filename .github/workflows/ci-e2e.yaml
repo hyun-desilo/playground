@@ -1,0 +1,14 @@
+# This workflow will build HER docker images and run pytest with container
+
+name: CI HER End-to-End
+
+on:
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  end-to-end-test:
+    name: End to end test
+    # if: ${{ github.event.pull_request_review_comment.comment == 'run e2e' || github.ref_name == 'main' }}
+    runs-on: ubuntu-20.04
+    run: ls
