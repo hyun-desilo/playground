@@ -10,6 +10,9 @@ jobs:
     if: contains(github.event.comment.body, '/e2e')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3be1b1fe22daf5d3ed5002a46f245f6dfce908f1
+      - uses: actions/checkout@v3
+        with:
+          ref: 3be1b1fe22daf5d3ed5002a46f245f6dfce908f1
+
       - name: e2e
         run: echo e2e is running
