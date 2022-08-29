@@ -20,7 +20,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(context)
+            console.log(context.issue.pull_request)
             const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
             const badgeURI = `${baseURL}/actions/workflows/${context.repo.owner}.yaml/badge.svg?branch=${encodeURI(context.ref)}`
             const workflowURL = `${baseURL}/actions/runs/${context.runId}`
