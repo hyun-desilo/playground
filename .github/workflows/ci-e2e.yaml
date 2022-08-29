@@ -16,7 +16,7 @@ jobs:
           echo start e2e
       - name: Add E2E comment
         if: contains(github.event.comment.body, '/e2e') # check the comment if it contains the keywords
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
