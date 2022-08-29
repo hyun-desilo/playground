@@ -24,7 +24,7 @@ jobs:
             const pr_result = await github.request(pr)
             const branch = pr_result.data.head.ref
 
-            console.log(context.workflow)
+            console.log(context.action)
 
             const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
             const badgeURI = `${baseURL}/actions/workflows/${context.repo.owner}.yaml/badge.svg?branch=${encodeURI(branch)}`
