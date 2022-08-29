@@ -30,6 +30,6 @@ jobs:
               repo: context.repo.repo,
               body: `🚀   [![E2E](${badgeURI})](${workflowURL})`
             })
-        - name: Success
-          run: |
-            echo success
+      - name: Success
+        run: |
+          echo success
