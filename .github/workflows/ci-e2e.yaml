@@ -7,7 +7,7 @@ on:
 jobs:
   e2e:
     name: E2E
-    if: contains(github.event.comment.body, '/e2e')
+    # if: contains(github.event.comment.body, '/e2e')
     runs-on: ubuntu-latest
     steps:
       - name: log
