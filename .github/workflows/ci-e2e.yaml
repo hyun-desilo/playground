@@ -1,13 +1,12 @@
 name: E2E
 
 on:
-  issue_comment:
-    types: [created, edited, deleted]
+  pull_request_comment:
+    types: [created]
 
 jobs:
   e2e:
     name: E2E
-    if: contains(github.event.comment.html_url, '/pull/') # check if the comments come from pull request, exclude those from issue.
     runs-on: ubuntu-latest
     steps:
       - name: E2E
@@ -23,6 +22,8 @@ jobs:
             const pr = context.payload.issue.pull_request
             const pr_result = await github.request(pr)
             const branch = pr_result.data.head.ref
+
+            console.log(context)
 
             const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
             const badgeURI = `${baseURL}/actions/workflows/ci-e2e.yaml/badge.svg?branch=${encodeURI(branch)}`
