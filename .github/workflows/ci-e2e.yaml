@@ -6,6 +6,7 @@ on:
 
 jobs:
   e2e:
+    name: E2E
     if: contains(github.event.comment.html_url, '/pull/') # check if the comments come from pull request, exclude those from issue.
     runs-on: ubuntu-latest
     steps:
@@ -19,16 +20,15 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const encodedBranch = encodeURI("test/1")
             console.log(context)
-            const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/workflows/ci-e2e.yaml`
-            const badgeURI = `${baseURL}/badge.svg?branch=${encodedBranch}`
-            const workflowURL = `${baseURL}?query=branch%3A${encodedBranch}`
+            const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
+            const badgeURI = `${baseURL}/actions/workflows/${context.repo.owner}.yaml/badge.svg?branch=${encodeURI(context.ref)}`
+            const workflowURL = `${baseURL}actions/runs/${context.runId}`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚀   [![E2E](${badgeURI})](${workflowURL})`
+              body: `E2E test is running -> [![E2E](${badgeURI})](${workflowURL})`
             })
       - name: Success
         run: |
