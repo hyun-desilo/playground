@@ -5,8 +5,44 @@ on: push
 jobs:
   e2e:
     name: E2E
-    # if: ${{ github.event == 'e2e' }}
+    if: contains(github.event.comment.body, '/e2e')
     runs-on: ubuntu-latest
     steps:
-      - name: e2e
-        run: echo ${{ github.event }}
+      - uses: actions/github-script@v3
+        id: get-info
+        with:
+          script: |
+            const request = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            }
+            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
+            try {
+              const result = await github.pulls.get(request)
+              return result.data
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
+      - name: Add E2E comment
+        if: contains(github.event.comment.body, '/e2e') # check the comment if it contains the keywords
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const pr = context.payload.issue.pull_request
+            const pr_result = await github.request(pr)
+            const branch = pr_result.data.head.ref
+
+            const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
+            const badgeURI = `${baseURL}/actions/workflows/ci-e2e.yaml/badge.svg?branch=${encodeURI(branch)}`
+            const workflowURL = `${baseURL}/actions/runs/${context.runId}`
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `E2E test is running -> [![E2E](${badgeURI})](${workflowURL})`
+            })
+      - name: Success
+        run: |
+          echo success

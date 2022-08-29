@@ -1,0 +1,11 @@
+name: E2E
+
+on: push
+
+jobs:
+  e2e:
+    name: E2E
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success
+        run: exit 2
