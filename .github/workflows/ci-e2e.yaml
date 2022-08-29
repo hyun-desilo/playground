@@ -1,14 +1,12 @@
 name: E2E
 
-on:
-  check_run:
-    types: [requested_action]
+on: push
 
 jobs:
   e2e:
     name: E2E
-    # if: contains(github.event.comment.body, '/e2e')
+    # if: ${{ github.event == 'e2e' }}
     runs-on: ubuntu-latest
     steps:
       - name: e2e
-        run: echo e2e is running
+        run: echo ${{ github }}
