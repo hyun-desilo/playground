@@ -1,11 +1,14 @@
 name: test
 
-on: push
+on:
+  pull_request:
+    types: [synchronize, opened, edited]
 
 jobs:
   e2e:
     name: E2E
+    if: contains(github.event.pull_request.body, 'run e2e')
     runs-on: ubuntu-latest
     steps:
       - name: Success
-        run: exit 1
+        run: echo success
