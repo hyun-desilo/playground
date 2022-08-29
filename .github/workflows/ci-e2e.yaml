@@ -20,11 +20,12 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const ctx = context.payload.issue.pull_request
-            const result = await github.request(ctx)
-            console.log(result)
+            const pr = context.payload.issue.pull_request
+            const pr_result = await github.request(pr)
+            const branch = result.data.head.ref
+
             const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
-            const badgeURI = `${baseURL}/actions/workflows/${context.repo.owner}.yaml/badge.svg?branch=${encodeURI(context.ref)}`
+            const badgeURI = `${baseURL}/actions/workflows/${context.repo.owner}.yaml/badge.svg?branch=${encodeURI(branch)}`
             const workflowURL = `${baseURL}/actions/runs/${context.runId}`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
