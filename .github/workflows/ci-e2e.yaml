@@ -12,6 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 6c2f09d9295a7edadf667444e749b9c73aed2f1e
+          ref: test/1
       - name: e2e
         run: echo e2e is running
