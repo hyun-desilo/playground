@@ -1,4 +1,4 @@
-name: CI HER End-to-End
+name: E2E
 
 on:
   issue_comment:
@@ -23,7 +23,7 @@ jobs:
             console.log(context)
             const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
             const badgeURI = `${baseURL}/actions/workflows/${context.repo.owner}.yaml/badge.svg?branch=${encodeURI(context.ref)}`
-            const workflowURL = `${baseURL}actions/runs/${context.runId}`
+            const workflowURL = `${baseURL}/actions/runs/${context.runId}`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
