@@ -16,3 +16,5 @@ jobs:
         run: hub pr checkout ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: e2e
+        run: echo e2e is running
