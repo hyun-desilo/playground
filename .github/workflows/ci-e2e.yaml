@@ -1,14 +1,27 @@
-# This workflow will build HER docker images and run pytest with container
-
 name: CI HER End-to-End
 
 on:
-  pull_request_review_comment:
-    types: [created, deleted]
+  issue_comment:
+    types: [created, edited, deleted]
 
-jobs:
-  end-to-end-test:
-    name: End to end test
-    # if: ${{ github.event.pull_request_review_comment.comment == 'run e2e' || github.ref_name == 'main' }}
-    runs-on: ubuntu-20.04
-    run: ls
+pull_request_comment:
+  if: contains(github.event.comment.html_url, '/pull/') # check if the comments come from pull request, exclude those from issue.
+  runs-on: ubuntu-latest
+  steps:
+    - name: E2E
+      if: contains(github.event.comment.body, '/e2e') # check the comment if it contains the keywords
+      run: |
+        echo start e2e
+    - name: Add E2E comment
+      if: contains(github.event.comment.body, '/e2e') # check the comment if it contains the keywords
+      uses: actions/github-script@v5
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const encodedBranch = encodeURI("test/1")
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `![](https://github.com/hyun-desilo/playground/actions/workflows/ci-e2e.yaml/badge.svg?branch=${encodedBranch})`
+          })
