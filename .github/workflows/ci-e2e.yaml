@@ -1,8 +1,8 @@
 name: E2E
 
 on:
-  pull_request_review_comment:
-    types: [created]
+  issue_comment:
+    # types: [created]
 
 jobs:
   e2e:
@@ -10,7 +10,8 @@ jobs:
     # if: contains(github.event.comment.body, '/e2e')
     runs-on: ubuntu-latest
     steps:
-      - name: log
-        run: echo ${{ github.event.comment.body }}
+      - uses: actions/checkout@v3
+        with:
+          ref: 6c2f09d9295a7edadf667444e749b9c73aed2f1e
       - name: e2e
         run: echo e2e is running
