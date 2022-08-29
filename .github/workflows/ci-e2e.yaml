@@ -10,5 +10,7 @@ jobs:
     if: contains(github.event.comment.body, '/e2e')
     runs-on: ubuntu-latest
     steps:
+      - name: log
+        run: echo ${{ github.event.comment.body }}
       - name: e2e
         run: echo e2e is running
