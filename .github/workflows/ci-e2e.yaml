@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: e2e
-        run: echo ${{ github }}
+        run: echo ${{ github.event }}
