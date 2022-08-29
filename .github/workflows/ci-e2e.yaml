@@ -20,8 +20,8 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const diff_url = context.payload.issue.pull_request.diff_url
-            const result = await github.request(diff_url)
+            const ctx = context.payload.issue.pull_request
+            const result = await github.request(ctx)
             console.log(result)
             const baseURL = `https://github.com/${context.repo.owner}/${context.repo.repo}`
             const badgeURI = `${baseURL}/actions/workflows/${context.repo.owner}.yaml/badge.svg?branch=${encodeURI(context.ref)}`
