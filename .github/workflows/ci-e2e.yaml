@@ -1,7 +1,7 @@
 name: E2E
 
 on:
-  issue_comment:
+  pull_request_review_comment:
     types: [created]
 
 jobs:
@@ -10,11 +10,5 @@ jobs:
     if: contains(github.event.comment.body, '/e2e')
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Checkout Pull Request
-        run: hub pr checkout ${{ github.event.issue.number }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: e2e
         run: echo e2e is running
