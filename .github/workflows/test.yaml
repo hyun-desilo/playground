@@ -1,4 +1,4 @@
-name: E2E
+name: test
 
 on: push
 
@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Success
-        run: exit 0
+        run: exit 1
