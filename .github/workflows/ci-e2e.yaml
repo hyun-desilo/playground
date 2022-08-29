@@ -1,8 +1,8 @@
 name: E2E
 
 on:
-  issue_comment:
-    # types: [created]
+  check_run:
+    types: [requested_action]
 
 jobs:
   e2e:
@@ -10,8 +10,5 @@ jobs:
     # if: contains(github.event.comment.body, '/e2e')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: test/1
       - name: e2e
         run: echo e2e is running
