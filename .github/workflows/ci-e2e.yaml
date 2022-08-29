@@ -1,12 +1,12 @@
 name: E2E
 
 on:
-  pull_request_review_comment:
-    types: [created]
+  pull_request:
+    types: [labeled]
 
 jobs:
   e2e:
-    name: E2E
+    if: ${{ github.event.label.name == 'e2e' }}
     runs-on: ubuntu-latest
     steps:
       - name: E2E
