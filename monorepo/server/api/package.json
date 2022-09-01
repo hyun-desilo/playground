@@ -1,5 +1,5 @@
 {
-  "name": "be2",
+  "name": "api",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

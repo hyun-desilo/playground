@@ -8,11 +8,9 @@
     ]
   },
   "scripts": {
-    "start:fe1": "npm run start --workspace=fe1",
-    "build:fe1": "npm run build --workspace=fe1",
-    "start:fe2": "npm run start --workspace=fe2",
-    "start:be1": "npm run start --workspace=be1",
-    "start:be2": "npm run start --workspace=be2",
-    "test:all": "npm run test --workspaces --if-present"
+    "start:asker": "npm --prefix client/asker start",
+    "start:debugger": "npm --prefix client/asker start",
+    "start:dataloader": "npm --prefix server/dataloader start",
+    "start:api": "npm --prefix server/api start"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "be1",
+  "name": "dataloader",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

@@ -1,6 +1,7 @@
 // import multiply from 'common/utils/multiply';
 const express = require('express');
 const multiply = require('common/utils/multiply');
+const dayjs = require('dayjs');
 
 const app = express();
 const port = 4000;
@@ -11,6 +12,10 @@ app.get('/', (req, res) => {
 
 app.get('/multiply', (req, res) => {
   res.send(`4 x 5 = ${multiply(4, 5)}`);
+});
+
+app.get('/dayjs', (req, res) => {
+  res.send(`${dayjs().toISOFormat()}`);
 });
 
 app.listen(port, () => {
