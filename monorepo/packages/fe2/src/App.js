@@ -1,10 +1,10 @@
 import multiply from 'common/utils/multiply';
-import Header from 'common/components/Header';
+// import Header from 'common/components/Header'; TODO
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <div>FE2</div>
       <div>3 x 4 = {multiply(3, 4)}</div>
     </div>
