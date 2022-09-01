@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "main": "index.js",
+  "workspaces": [
+    "api",
+    "dataloader"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
