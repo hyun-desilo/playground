@@ -5,10 +5,6 @@
       "common",
       "server",
       "client"
-    ],
-    "nohoist": [
-      "client",
-      "server"
     ]
   },
   "scripts": {
