@@ -1,5 +1,5 @@
-import multiply from 'common/utils/multiply';
-import express from 'express';
+const express = require('express');
+const multiply = require('common/utils/multiply');
 
 const app = express();
 const port = 4000;

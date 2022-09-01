@@ -1,5 +1,5 @@
-import Header from 'common/components/Header';
 import multiply from 'common/utils/multiply';
+import Header from 'common/components/Header';
 
 function App() {
   return (
