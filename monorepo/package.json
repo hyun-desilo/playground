@@ -1,11 +1,12 @@
 {
   "name": "monorepo",
-  "workspaces": {
-    "packages": [
-      "common",
-      "server",
-      "client"
-    ]
+  "workspaces": [
+    "common",
+    "server",
+    "client"
+  ],
+  "dependencies": {
+    "prisma": "4.3.0"
   },
   "scripts": {
     "start:asker": "npm --prefix client/asker start",

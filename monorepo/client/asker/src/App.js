@@ -1,7 +1,13 @@
 import multiply from 'common/utils/multiply';
+import axios from 'axios';
+import { useEffect } from 'react';
 // import Header from 'common/components'; // TODO
 
 function App() {
+  useEffect(() => {
+    axios.get('error');
+  }, []);
+
   return (
     <div className="App">
       {/* <Header /> */}

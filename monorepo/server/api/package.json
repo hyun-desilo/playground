@@ -5,6 +5,7 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.5.0",
     "lodash": "4.17.21"
   }
 }

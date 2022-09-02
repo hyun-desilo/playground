@@ -8,6 +8,6 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "fake": "^0.2.2"
+    "axios": "0.27.2"
   }
 }
