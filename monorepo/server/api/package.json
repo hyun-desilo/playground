@@ -1,5 +1,6 @@
 {
   "name": "api",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
