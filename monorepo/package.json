@@ -7,23 +7,19 @@
       "common",
       "server",
       "client"
-    ],
-    "nohoist": [
-      "client/**",
-      "server/**"
     ]
   },
   "engines": {
-    "node": "18"
+    "node": "18.7.0"
   },
   "packageManager": "yarn@3.2.3",
   "dependencies": {
     "prisma": "4.3.0"
   },
   "scripts": {
-    "start:asker": "npm --prefix client/asker start",
-    "start:debugger": "npm --prefix client/asker start",
-    "start:dataloader": "npm --prefix server/dataloader start",
-    "start:api": "npm --prefix server/api start"
+    "asker": "npm --prefix client/asker start",
+    "debugger": "npm --prefix client/debugger start",
+    "dataloader": "npm --prefix server/dataloader start",
+    "api": "npm --prefix server/api start"
   }
 }
