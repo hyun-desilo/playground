@@ -1,6 +1,7 @@
 const express = require('express');
 const multiply = require('common/utils/multiply');
 const { faker } = require('@faker-js/faker');
+const dayjs = require('dayjs');
 
 const app = express();
 const port = 4000;
@@ -15,6 +16,11 @@ app.get('/multiply', (req, res) => {
 
 app.get('/faker', (req, res) => {
   res.send(faker.name.fullName());
+});
+
+// shourd be error
+app.get('/dayjs', (req, res) => {
+  res.send(`${dayjs().toISOString()}`);
 });
 
 app.listen(port, () => {

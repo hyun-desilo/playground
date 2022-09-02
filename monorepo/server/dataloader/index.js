@@ -15,7 +15,7 @@ app.get('/multiply', (req, res) => {
 });
 
 app.get('/dayjs', (req, res) => {
-  res.send(`${dayjs().toISOFormat()}`);
+  res.send(`${dayjs().toISOString()}`);
 });
 
 app.listen(port, () => {

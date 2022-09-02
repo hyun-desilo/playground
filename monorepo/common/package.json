@@ -2,5 +2,8 @@
   "name": "common",
   "private": true,
   "version": "0.1.0",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "2.1208.0"
+  }
 }
