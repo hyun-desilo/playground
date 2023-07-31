@@ -1,0 +1,13 @@
+name: test
+
+on:
+  pull_request:
+  merge_group:
+
+jobs:
+  tetst:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success
+        run: sleep 30s && echo success
